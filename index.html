@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | BBA Graduate & Management Professional</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">Portfolio.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="btn-primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <span class="badge">BBA Graduate — Class of 2026</span>
+      <h1>Aspiring Business Leader & Analyst</h1>
+      <p>Passionate about strategic management, market analytics, and operations. Equipped with modern industry certifications and a practical foundation in business administration.</p>
+      <div class="hero-actions">
+        <a href="#certifications" class="btn-primary">View Credentials</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Academic Background</h3>
+          <p>Graduated with a Bachelor of Business Administration (BBA) in 2026, building strong competencies across financial analysis, marketing strategy, and organizational behavior.</p>
+        </div>
+        <div class="about-card">
+          <h3>Career Objective</h3>
+          <p>Seeking to leverage analytical thinking and management frameworks in dynamic corporate environments, contributing to scalable business growth and strategy execution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-alt">
+    <div class="container">
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-tag">Business Strategy</div>
+        <div class="skill-tag">Financial Analysis</div>
+        <div class="skill-tag">Market Research</div>
+        <div class="skill-tag">Data Interpretation & Excel</div>
+        <div class="skill-tag">Project Management</div>
+        <div class="skill-tag">Digital Marketing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <h2 class="section-title">Professional Certifications</h2>
+      <p class="section-subtitle">Click on any certificate to view the verified credential image.</p>
+      
+      <div class="certs-grid">
+        <!-- Certificate Card 1 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper" onclick="openModal('assets/cert-data-analytics.jpg', 'Data Analytics Certification')">
+            <img src="assets/cert-data-analytics.jpg" alt="Data Analytics Certificate" onerror="this.src='https://via.placeholder.com/400x250?text=Data+Analytics+Certificate'">
+            <span class="overlay-text">Click to View</span>
+          </div>
+          <div class="cert-info">
+            <h3>Data Analytics & Visualization</h3>
+            <p class="issuer">Issued by: Google / Coursera (2026)</p>
+          </div>
+        </div>
+
+        <!-- Certificate Card 2 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper" onclick="openModal('assets/cert-financial-modeling.jpg', 'Financial Modeling Certification')">
+            <img src="assets/cert-financial-modeling.jpg" alt="Financial Modeling Certificate" onerror="this.src='https://via.placeholder.com/400x250?text=Financial+Modeling+Certificate'">
+            <span class="overlay-text">Click to View</span>
+          </div>
+          <div class="cert-info">
+            <h3>Financial Modeling & Valuation</h3>
+            <p class="issuer">Issued by: Corporate Finance Institute (2026)</p>
+          </div>
+        </div>
+
+        <!-- Certificate Card 3 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper" onclick="openModal('assets/cert-digital-marketing.jpg', 'Digital Marketing Certification')">
+            <img src="assets/cert-digital-marketing.jpg" alt="Digital Marketing Certificate" onerror="this.src='https://via.placeholder.com/400x250?text=Digital+Marketing+Certificate'">
+            <span class="overlay-text">Click to View</span>
+          </div>
+          <div class="cert-info">
+            <h3>Strategic Digital Marketing</h3>
+            <p class="issuer">Issued by: HubSpot Academy (2026)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal / Lightbox -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="modalCaption"></div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-alt">
+    <div class="container text-center">
+      <h2 class="section-title">Connect With Me</h2>
+      <p>I am open to management trainee roles, associate analyst positions, and consulting opportunities.</p>
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com" class="btn-primary">Send an Email</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2026 Portfolio. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
