@@ -319,12 +319,26 @@
   </div>
   <script src="script.js"></script>
 
-  <!-- Back to Top Button -->
+ <!-- Cookie Consent Banner -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-content">
+      <p>🍪 This website uses cookies to enhance your browsing experience and analyze site traffic.</p>
+      <div class="cookie-actions">
+        <button id="acceptCookies" class="btn-cookie-accept">Accept All</button>
+        <button id="declineCookies" class="btn-cookie-decline">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button (Must be ABOVE script.js) -->
   <button id="backToTop" class="back-to-top" aria-label="Back to top">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6"/>
     </svg>
   </button>
+
+  <!-- Script loads AFTER all elements exist -->
+  <script src="script.js"></script>
 </body>
 </html>
 
