@@ -12,7 +12,7 @@ function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
 
-// Close modal if user presses Escape key
+// Close lightbox on 'Escape' key
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeModal();
