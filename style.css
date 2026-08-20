@@ -615,7 +615,7 @@ footer {
     width: 100%;
     background: var(--nav-bg);
     border-bottom: 1px solid var(--border);
-    padding: 24px;
+    padding: 32px 24px;
     display: none;
     box-shadow: var(--shadow-lg);
   }
@@ -624,14 +624,29 @@ footer {
     display: block;
   }
 
+  /* Centered and enlarged mobile menu links */
   .nav-links {
     flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 
-  .btn-download-nav, .btn-nav {
+  .nav-links a.nav-link {
+    font-size: 1.15rem;
+    font-weight: 600;
     text-align: center;
+    padding: 6px 0;
+  }
+
+  /* Full-width styled buttons in mobile view */
+  .btn-download-nav, 
+  .btn-nav {
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+    font-size: 1.05rem;
+    padding: 12px 20px;
   }
 
   /* Hamburger transform animation */
