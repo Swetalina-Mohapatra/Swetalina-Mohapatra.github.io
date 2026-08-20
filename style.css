@@ -454,3 +454,56 @@ footer {
   .nav-links { display: none; }
   .certs-grid { grid-template-columns: 1fr; }
 }
+
+/* Contact Section with Photo */
+.contact-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 48px;
+}
+
+.contact-details {
+  flex: 1;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.contact-photo-container {
+  flex-shrink: 0;
+}
+
+.contact-photo {
+  width: 240px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #ffffff;
+  display: block;
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 28px;
+  }
+  
+  .text-left {
+    text-align: center;
+  }
+  
+  .contact-photo {
+    width: 200px;
+    height: 240px;
+  }
+}
