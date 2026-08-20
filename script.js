@@ -62,3 +62,28 @@ document.addEventListener("keydown", function (event) {
     closeModal();
   }
 });
+// --- Cookie Consent Logic ---
+const cookieBanner = document.getElementById("cookieBanner");
+const acceptCookiesBtn = document.getElementById("acceptCookies");
+const declineCookiesBtn = document.getElementById("declineCookies");
+
+window.addEventListener("DOMContentLoaded", () => {
+  const cookieChoice = localStorage.getItem("cookieConsent");
+
+  // If no choice was recorded previously, slide the banner in after a brief delay
+  if (!cookieChoice) {
+    setTimeout(() => {
+      cookieBanner.classList.add("show");
+    }, 800);
+  }
+});
+
+acceptCookiesBtn.addEventListener("click", () => {
+  localStorage.setItem("cookieConsent", "accepted");
+  cookieBanner.classList.remove("show");
+});
+
+declineCookiesBtn.addEventListener("click", () => {
+  localStorage.setItem("cookieConsent", "declined");
+  cookieBanner.classList.remove("show");
+});
