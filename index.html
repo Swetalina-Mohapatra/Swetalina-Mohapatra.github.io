@@ -13,14 +13,31 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="#" class="nav-logo">Swetalina Mohapatra</a>
-      <div class="nav-links">
-  <a href="#about">About</a>
-  <a href="#projects">Project</a>
-  <a href="#skills">Skills</a>
-  <a href="#certifications">Certifications</a>
-  <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-download-nav">Download CV</a>
-  <a href="#contact" class="btn-nav">Contact</a>
-</div>
+
+      <!-- Desktop & Mobile Nav Menu -->
+      <div class="nav-menu" id="navMenu">
+        <div class="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Project</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#certifications" class="nav-link">Certifications</a>
+          <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-download-nav">Download CV</a>
+          <a href="#contact" class="btn-nav nav-link">Contact</a>
+        </div>
+      </div>
+
+      <!-- Controls: Theme Toggle & Hamburger Button -->
+      <div class="nav-controls">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
     </div>
   </nav>
 
@@ -31,10 +48,10 @@
       <h1>HR Specialist & Business Analyst</h1>
       <p>Bridging core human resource management frameworks with modern workforce analytics, AI literacy, and operational strategy.</p>
       <div class="hero-actions">
-  <a href="#projects" class="btn-primary">View Tata Steel Study</a>
-  <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-secondary">Download Resume</a>
-  <a href="#certifications" class="btn-outline">Certifications</a>
-</div>
+        <a href="#projects" class="btn-primary">View Tata Steel Study</a>
+        <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-secondary">Download Resume</a>
+        <a href="#certifications" class="btn-outline">Certifications</a>
+      </div>
     </div>
   </header>
 
@@ -261,35 +278,30 @@
     <div id="modalCaption"></div>
   </div>
 
-<!-- Contact Section -->
-<section id="contact" class="section">
-  <div class="container">
-    <div class="contact-wrapper">
-      
-      <!-- Text & Buttons Column -->
-      <div class="contact-details">
-        <h2 class="section-title text-left">Get in Touch</h2>
-        <p class="contact-subtext">Open to Management Trainee, Human Resources Associate, and People Operations roles.</p>
-        <div class="contact-links">
-  <a href="https://in.linkedin.com/in/swetalina-mohapatra-sm2004" target="_blank" class="btn-primary">Connect on LinkedIn</a>
-  <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-secondary">Download Resume (PDF)</a>
-  <a href="mailto:swetalinaa.mohapatra04@gmail.com" class="btn-outline">Send Direct Email</a>
-</div>
+  <!-- Contact Section with Profile Photo -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-details">
+          <h2 class="section-title text-left">Get in Touch</h2>
+          <p class="contact-subtext">Open to Management Trainee, Human Resources Associate, and People Operations roles.</p>
+          <div class="contact-links">
+            <a href="https://in.linkedin.com/in/swetalina-mohapatra-sm2004" target="_blank" class="btn-primary">Connect on LinkedIn</a>
+            <a href="assets/resume.pdf" download="Swetalina_Mohapatra_Resume.pdf" class="btn-secondary">Download Resume (PDF)</a>
+            <a href="mailto:swetalinaa.mohapatra04@gmail.com" class="btn-outline">Send Direct Email</a>
+          </div>
+        </div>
+        <div class="contact-photo-container">
+          <img src="assets/profile.jpg" alt="Swetalina Mohapatra" class="contact-photo" onerror="this.src='https://via.placeholder.com/240x280?text=Profile+Photo'">
+        </div>
       </div>
-
-      <!-- Profile Photo Column -->
-      <div class="contact-photo-container">
-        <img src="assets/profile.jpg" alt="Swetalina Mohapatra" class="contact-photo" onerror="this.src='https://via.placeholder.com/260x320?text=Profile+Photo'">
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer>
     <div class="container text-center">
-      <p>&copy; 2026 Swetalina Mohapatra.</p>
+      <p>&copy; 2026 Swetalina Mohapatra</p>
     </div>
   </footer>
 
