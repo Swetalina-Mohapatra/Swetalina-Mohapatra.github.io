@@ -468,7 +468,9 @@ body {
 
 .cert-img-wrapper {
   position: relative;
-  height: 160px;
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Maintains clean document proportions automatically */
+  height: auto;          /* Overrides rigid pixel height */
   background-color: var(--border);
 }
 
