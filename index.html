@@ -274,11 +274,11 @@
   </section>
 
   <!-- Modal / Lightbox -->
-  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Certificate Image Viewer">
-    <div class="modal-backdrop"></div>
-    <div class="modal-container">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <img class="modal-content" id="modalImg" alt="Selected Certificate">
+  <!-- Modal / Lightbox -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <div class="modal-wrapper" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close modal">&times;</button>
+      <img class="modal-content" id="modalImg" src="" alt="Selected Certificate">
       <div id="modalCaption"></div>
     </div>
   </div>
