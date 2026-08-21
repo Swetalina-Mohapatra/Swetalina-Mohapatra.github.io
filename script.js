@@ -70,6 +70,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // 2. Certificate Category Filter Tabs
+  const filterBtns = document.querySelectorAll(".cert-filter-btn");
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filterValue = btn.getAttribute("data-filter");
+      certCards.forEach((card) => {
+        // Exclude the Tata steel project preview card from filtering
+        if (card.classList.contains("project-cert-card")) return;
+
+        const cardCategory = card.getAttribute("data-category");
+        if (filterValue === "all" || cardCategory === filterValue) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
   // 2. Dark / Light Mode Logic
   const themeToggleBtn = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
