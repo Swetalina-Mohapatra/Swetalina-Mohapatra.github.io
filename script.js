@@ -1,5 +1,5 @@
-// --- Global Modal Functions (Accessible from inline HTML and Event Listeners) ---
-window.openModal = function (imageSrc, captionText) {
+// --- Modal Open/Close Logic ---
+function openModal(imageSrc, captionText) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
   const modalCaption = document.getElementById("modalCaption");
@@ -12,15 +12,14 @@ window.openModal = function (imageSrc, captionText) {
   }
 
   modal.style.display = "flex";
-  // Small delay to trigger smooth transition
-  setTimeout(() => {
-    modal.classList.add("active");
-  }, 10);
+  // Force browser reflow before adding the active transition class
+  void modal.offsetWidth;
+  modal.classList.add("active");
 
-  document.body.style.overflow = "hidden"; // Prevent background scroll
-};
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+}
 
-window.closeModal = function () {
+function closeModal() {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
 
@@ -33,18 +32,45 @@ window.closeModal = function () {
   }, 200);
 
   document.body.style.overflow = "";
-};
+}
+
+// Make functions globally available for inline events if needed
+window.openModal = openModal;
+window.closeModal = closeModal;
 
 // Close modal on 'Escape' key
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
-    window.closeModal();
+    closeModal();
   }
 });
 
 // --- Main DOM Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Dark / Light Mode Logic ---
+  // 1. Attach Click Listeners to all Certificate Cards
+  const certCards = document.querySelectorAll(".cert-card");
+  certCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      // Prioritize data-img, fallback to the inner <img> src attribute
+      const innerImg = card.querySelector("img");
+      const imageSrc = card.getAttribute("data-img") || (innerImg ? innerImg.currentSrc || innerImg.src : "");
+      
+      const titleElem = card.querySelector("h4");
+      const subtitleElem = card.querySelector(".issuer");
+      let fallbackCaption = "";
+      if (titleElem && subtitleElem) {
+        fallbackCaption = `${titleElem.textContent.trim()} — ${subtitleElem.textContent.trim()}`;
+      }
+
+      const captionText = card.getAttribute("data-caption") || fallbackCaption;
+
+      if (imageSrc) {
+        openModal(imageSrc, captionText);
+      }
+    });
+  });
+
+  // 2. Dark / Light Mode Logic
   const themeToggleBtn = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
 
@@ -70,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Mobile Hamburger Menu Logic ---
+  // 3. Mobile Hamburger Menu Logic
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const navMenu = document.getElementById("navMenu");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -89,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Back to Top Logic ---
+  // 4. Back to Top Logic
   const backToTopBtn = document.getElementById("backToTop");
 
   if (backToTopBtn) {
@@ -102,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({
@@ -112,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Cookie Banner Logic ---
+  // 5. Cookie Consent Banner Logic
   const cookieBanner = document.getElementById("cookieBanner");
   const acceptCookiesBtn = document.getElementById("acceptCookies");
   const declineCookiesBtn = document.getElementById("declineCookies");
