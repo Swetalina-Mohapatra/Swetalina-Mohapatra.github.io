@@ -34,19 +34,22 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  scroll-behavior: smooth;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 body {
   color: var(--text-main);
   background-color: var(--bg-main);
   line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .container {
@@ -63,6 +66,7 @@ body {
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .nav-container {
@@ -217,6 +221,7 @@ body {
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-primary {
@@ -288,6 +293,7 @@ body {
   border: 1px solid var(--border);
   background: var(--card-bg);
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .about-card.highlight {
@@ -334,6 +340,7 @@ body {
   padding: 36px;
   margin-top: 24px;
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .project-tag {
@@ -422,7 +429,6 @@ body {
               color 0.2s ease;
 }
 
-/* Hover Interaction */
 .skill-pill:hover {
   transform: translateY(-3px);
   border-color: var(--primary);
@@ -431,7 +437,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Dark Mode hover enhancement */
 [data-theme="dark"] .skill-pill:hover {
   background-color: #1e3a5f;
   border-color: var(--primary);
@@ -453,7 +458,7 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.25s ease;
 }
 
 .cert-card:hover {
@@ -559,6 +564,7 @@ body {
   border-radius: 12px;
   padding: 48px;
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .contact-details {
@@ -600,93 +606,13 @@ footer {
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
+  transition: border-color 0.25s ease;
 }
 
-/* Mobile & Tablet Responsive */
-@media (max-width: 768px) {
-  .hamburger-btn {
-    display: flex;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--nav-bg);
-    border-bottom: 1px solid var(--border);
-    padding: 32px 24px;
-    display: none;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .nav-menu.active {
-    display: block;
-  }
-
-  /* Centered and enlarged mobile menu links */
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .nav-links a.nav-link {
-    font-size: 1.15rem;
-    font-weight: 600;
-    text-align: center;
-    padding: 6px 0;
-  }
-
-  /* Full-width styled buttons in mobile view */
-  .btn-download-nav, 
-  .btn-nav {
-    text-align: center;
-    width: 100%;
-    max-width: 280px;
-    font-size: 1.05rem;
-    padding: 12px 20px;
-  }
-
-  /* Hamburger transform animation */
-  .hamburger-btn.active .bar:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
-  }
-  .hamburger-btn.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger-btn.active .bar:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
-  }
-
-  .hero h1 { font-size: 2.1rem; }
-  .certs-grid { grid-template-columns: 1fr; }
-
-  .contact-wrapper {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 32px 24px;
-    gap: 28px;
-  }
-
-  .text-left {
-    text-align: center;
-  }
-
-  .contact-links {
-    justify-content: center;
-  }
-
-  .contact-photo {
-    width: 200px;
-    height: 240px;
-  }
-}
 /* Cookie Consent Banner */
 .cookie-banner {
   position: fixed;
-  bottom: -150px; /* Initially hidden below viewport */
+  bottom: -150px;
   left: 0;
   right: 0;
   background-color: var(--nav-bg);
@@ -762,6 +688,141 @@ footer {
   color: var(--text-main);
 }
 
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+  z-index: 1001;
+}
+
+.back-to-top svg {
+  stroke: #ffffff;
+  transition: stroke 0.25s ease;
+}
+
+[data-theme="dark"] .back-to-top {
+  background-color: var(--primary);
+}
+
+[data-theme="dark"] .back-to-top svg {
+  stroke: #0b1120;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* Mobile & Tablet Responsive */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 24px;
+    display: none;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav-menu.active {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .nav-links a.nav-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 6px 0;
+  }
+
+  .btn-download-nav, 
+  .btn-nav {
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+    font-size: 1.05rem;
+    padding: 12px 20px;
+  }
+
+  .hamburger-btn.active .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+  }
+  .hamburger-btn.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.active .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+  }
+
+  .hero h1 { font-size: 2.1rem; }
+  .certs-grid { grid-template-columns: 1fr; }
+
+  .contact-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 28px;
+  }
+
+  .text-left {
+    text-align: center;
+  }
+
+  .contact-links {
+    justify-content: center;
+  }
+
+  .contact-photo {
+    width: 200px;
+    height: 240px;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
 @media (max-width: 600px) {
   .cookie-content {
     flex-direction: column;
@@ -773,59 +834,5 @@ footer {
   .btn-cookie-accept, .btn-cookie-decline {
     flex: 1;
     text-align: center;
-  }
-}
-/* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background-color: var(--primary, #0f4c81);
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
-  z-index: 1001; /* Keeps it above modals, banners, and footers */
-}
-
-.back-to-top svg {
-  stroke: #ffffff;
-}
-
-[data-theme="dark"] .back-to-top {
-  background-color: var(--primary, #38bdf8);
-}
-
-[data-theme="dark"] .back-to-top svg {
-  stroke: #0b1120;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  background-color: var(--primary-hover, #0a365c);
-  transform: translateY(-3px);
-}
-/* Adjust position on mobile so it doesn't overlap cookies or edges */
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
   }
 }
