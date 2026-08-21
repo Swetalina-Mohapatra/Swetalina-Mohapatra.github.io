@@ -1,3 +1,48 @@
+// --- Global Modal Functions (Accessible from inline HTML and Event Listeners) ---
+window.openModal = function (imageSrc, captionText) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+
+  if (!modal || !modalImg) return;
+
+  modalImg.src = imageSrc;
+  if (modalCaption) {
+    modalCaption.textContent = captionText || "";
+  }
+
+  modal.style.display = "flex";
+  // Small delay to trigger smooth transition
+  setTimeout(() => {
+    modal.classList.add("active");
+  }, 10);
+
+  document.body.style.overflow = "hidden"; // Prevent background scroll
+};
+
+window.closeModal = function () {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  if (!modal) return;
+
+  modal.classList.remove("active");
+  setTimeout(() => {
+    modal.style.display = "none";
+    if (modalImg) modalImg.src = "";
+  }, 200);
+
+  document.body.style.overflow = "";
+};
+
+// Close modal on 'Escape' key
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    window.closeModal();
+  }
+});
+
+// --- Main DOM Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
   // --- Dark / Light Mode Logic ---
   const themeToggleBtn = document.getElementById("themeToggle");
@@ -44,47 +89,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Certificate Modal / Lightbox Logic ---
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-  const modalCaption = document.getElementById("modalCaption");
-  const modalCloseBtn = modal ? modal.querySelector(".modal-close") : null;
-  const modalBackdrop = modal ? modal.querySelector(".modal-backdrop") : null;
-  const certCards = document.querySelectorAll(".cert-card");
+  // --- Back to Top Logic ---
+  const backToTopBtn = document.getElementById("backToTop");
 
-  const openLightbox = (imgSrc, captionText) => {
-    if (!modal || !modalImg || !modalCaption) return;
-    modalImg.src = imgSrc;
-    modalCaption.textContent = captionText;
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden"; // Prevent background scroll
-  };
+  if (backToTopBtn) {
+    const handleScroll = () => {
+      if (window.scrollY > 250) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    };
 
-  const closeLightbox = () => {
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-    if (modalImg) modalImg.src = "";
-  };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
 
-  certCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const imgSrc = card.getAttribute("data-img") || card.querySelector("img")?.src;
-      const captionText = card.getAttribute("data-caption") || card.querySelector("h4")?.textContent || "";
-      if (imgSrc) openLightbox(imgSrc, captionText);
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
-  });
+  }
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeLightbox);
-  if (modalBackdrop) modalBackdrop.addEventListener("click", closeLightbox);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && modal.classList.contains("active")) {
-      closeLightbox();
-    }
-  });
-
-  // --- Cookie Consent Logic ---
+  // --- Cookie Banner Logic ---
   const cookieBanner = document.getElementById("cookieBanner");
   const acceptCookiesBtn = document.getElementById("acceptCookies");
   const declineCookiesBtn = document.getElementById("declineCookies");
@@ -110,28 +138,5 @@ document.addEventListener("DOMContentLoaded", () => {
         cookieBanner.classList.remove("show");
       });
     }
-  }
-
-  // --- Back to Top Logic ---
-  const backToTopBtn = document.getElementById("backToTop");
-
-  if (backToTopBtn) {
-    const toggleBackToTop = () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add("show");
-      } else {
-        backToTopBtn.classList.remove("show");
-      }
-    };
-
-    window.addEventListener("scroll", toggleBackToTop, { passive: true });
-    toggleBackToTop();
-
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
   }
 });
