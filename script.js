@@ -44,6 +44,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Certificate Modal / Lightbox Logic ---
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+  const modalCloseBtn = modal ? modal.querySelector(".modal-close") : null;
+  const modalBackdrop = modal ? modal.querySelector(".modal-backdrop") : null;
+  const certCards = document.querySelectorAll(".cert-card");
+
+  const openLightbox = (imgSrc, captionText) => {
+    if (!modal || !modalImg || !modalCaption) return;
+    modalImg.src = imgSrc;
+    modalCaption.textContent = captionText;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+  };
+
+  const closeLightbox = () => {
+    if (!modal) return;
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+    if (modalImg) modalImg.src = "";
+  };
+
+  certCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const imgSrc = card.getAttribute("data-img") || card.querySelector("img")?.src;
+      const captionText = card.getAttribute("data-caption") || card.querySelector("h4")?.textContent || "";
+      if (imgSrc) openLightbox(imgSrc, captionText);
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeLightbox);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+
   // --- Cookie Consent Logic ---
   const cookieBanner = document.getElementById("cookieBanner");
   const acceptCookiesBtn = document.getElementById("acceptCookies");
@@ -85,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("scroll", toggleBackToTop, { passive: true });
-    toggleBackToTop(); // Initial check on load
+    toggleBackToTop();
 
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({
@@ -93,31 +133,5 @@ document.addEventListener("DOMContentLoaded", () => {
         behavior: "smooth"
       });
     });
-  }
-});
-
-// --- Certificate Modal / Lightbox Logic (Global Functions) ---
-function openModal(imageSrc, captionText) {
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-  const caption = document.getElementById("modalCaption");
-
-  if (modal && modalImg && caption) {
-    modal.style.display = "flex";
-    modalImg.src = imageSrc;
-    caption.textContent = captionText;
-  }
-}
-
-function closeModal() {
-  const modal = document.getElementById("imageModal");
-  if (modal) {
-    modal.style.display = "none";
-  }
-}
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closeModal();
   }
 });
