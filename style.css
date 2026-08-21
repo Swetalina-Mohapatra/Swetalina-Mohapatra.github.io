@@ -387,6 +387,45 @@ body {
   top: -2px;
 }
 
+/* Split Layout for Project Section */
+.project-card-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: center;
+  padding: 36px;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-cert-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.project-cert-card {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustment for Mobile/Tablet */
+@media (max-width: 900px) {
+  .project-card-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px;
+  }
+
+  .project-cert-card {
+    max-width: 100%;
+  }
+}
 /* Skills Categories */
 .skills-categories {
   display: flex;
@@ -514,7 +553,6 @@ body {
   font-size: 0.8rem;
 }
 
-/* Lightbox Modal */
 /* Lightbox Modal */
 .modal {
   display: none;
