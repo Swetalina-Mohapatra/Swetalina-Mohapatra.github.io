@@ -475,6 +475,43 @@ body {
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
 }
 
+
+/* Certification Filter Controls */
+.cert-filter-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.cert-filter-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cert-filter-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .cert-filter-btn.active {
+  color: #0b1120;
+}
+
 /* Certifications Grid */
 .certs-grid {
   display: grid;
