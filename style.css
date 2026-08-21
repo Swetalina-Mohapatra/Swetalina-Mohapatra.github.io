@@ -390,40 +390,32 @@ body {
 /* Split Layout for Project Section */
 .project-card-split {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 36px;
+  grid-template-columns: 1.4fr 0.6fr; /* Gives more room to text, less to image */
+  gap: 32px;
   align-items: center;
-  padding: 36px;
-}
-
-.project-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-cert-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  padding: 32px;
 }
 
 .project-cert-card {
   width: 100%;
-  max-width: 360px;
+  max-width: 260px; /* Reduced from 360px for a cleaner, compact preview */
   margin: 0 auto;
 }
 
-/* Responsive adjustment for Mobile/Tablet */
+.project-cert-card .cert-img-wrapper {
+  aspect-ratio: 4 / 3; /* Keeps the preview tight and neatly cropped */
+}
+
+/* Mobile Adjustment */
 @media (max-width: 900px) {
   .project-card-split {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 24px;
+    gap: 24px;
+    padding: 20px;
   }
 
   .project-cert-card {
-    max-width: 100%;
+    max-width: 280px; /* Keeps it centered and reasonably sized on phone screens */
   }
 }
 /* Skills Categories */
