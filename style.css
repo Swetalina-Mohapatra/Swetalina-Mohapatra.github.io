@@ -251,6 +251,29 @@ body {
   border-color: var(--primary);
 }
 
+.btn-cv-contact {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-cv-contact:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .btn-cv-contact:hover {
+  color: #0b1120;
+}
+
+
 /* Sections Common */
 .section {
   padding: 70px 0;
